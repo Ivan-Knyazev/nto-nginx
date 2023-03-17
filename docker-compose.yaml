@@ -3,7 +3,7 @@ version: '3'
 services:
   webserver:
     image: nginx:latest
-    container_name: nginx
+    container_name: nto-nginx
     restart: unless-stopped
     ports:
       - ${PORTAINER_PORT}:10102

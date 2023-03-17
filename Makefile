@@ -8,7 +8,7 @@ run:
 	docker compose up -d
 
 stop:
-	docker stop webserver
+	docker stop nto-nginx
 
 down:
 	docker compose down
