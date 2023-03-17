@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  webserver:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - ${PORTAINER_PORT}:10102
+      - ${PGADMIN_PORT}:10103
+    volumes:
+      - ./nginx/conf/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
+      - ./nginx/ssl/ntv3.crt:/etc/ssl/ntv3.crt:ro
+      - ./nginx/ssl/ntv3.key:/etc/ssl/ntv3.key:ro
+      # - ./volumes/error.log:/var/log/nginx/error.log
+      # - ./volumes/access.log:/var/log/nginx/access.log
+    networks:
+      - postgres
+      - portainer
+
+networks:
+  postgres:
+    external: true
+  portainer:
+    external: true
+  
+
+  # certbot:
+  #   image: certbot/certbot:latest
+  #   container_name: certbot
+  #   volumes:
+  #     - ./certbot/www/:/var/www/certbot/:rw
+  #     - ./certbot/conf/:/etc/letsencrypt/:rw
+  #   depends_on:
+  #     - webserver
+  #   # command: certonly --webroot --webroot-path=/var/www/certbot/ --email ${EMAIL} --agree-tos --no-eff-email --staging -d ${DOMAIN}
+    
