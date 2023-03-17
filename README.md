@@ -33,10 +33,10 @@ Put SSL Certificate and SSL Key `to nginx/ssl/`
 ### Check
 For check logs in really time
 ```bash
-make build
+make check
 ```
 
-### Start
+### Run
 ```bash
 make run
 ```
@@ -48,7 +48,7 @@ make stop
 
 ### Down
 ```bash
-make stop
+make down
 ```
 
 

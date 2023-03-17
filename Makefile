@@ -1,10 +1,10 @@
-.PHONY: check start stop down
+.PHONY: check run stop down
 
 
 check:
 	docker compose up
 
-start:
+run:
 	docker compose up -d
 
 stop:
