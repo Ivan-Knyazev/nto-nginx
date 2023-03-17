@@ -8,7 +8,7 @@ start:
 	docker compose up -d
 
 stop:
-	docker compose stop
+	docker stop webserver
 
 down:
 	docker compose down
