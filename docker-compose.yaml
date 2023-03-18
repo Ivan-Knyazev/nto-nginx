@@ -1,37 +1,14 @@
-version: '3'
-
 services:
-  webserver:
-    image: nginx:latest
-    container_name: nto-nginx
-    restart: unless-stopped
+  web:
+    image: nto-nginx
+    # volumes:
+    #   - ./templates:/etc/nginx/templates
     ports:
-      - ${PORTAINER_PORT}:10102
-      - ${PGADMIN_PORT}:10103
-    volumes:
-      - ./nginx/conf/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
-      - ./nginx/ssl/lapsoft.mooo.com-crt.pem:/etc/ssl/lapsoft.mooo.com-crt.pem:ro
-      - ./nginx/ssl/lapsoft.mooo.com-key.pem:/etc/ssl/lapsoft.mooo.com-key.pem:ro
-      # - ./volumes/error.log:/var/log/nginx/error.log
-      # - ./volumes/access.log:/var/log/nginx/access.log
+      - ${PGADMIN_PORT}:10100
+      - ${PORTAINER_PORT}:20001
     networks:
       - postgres
-      - portainer
 
 networks:
   postgres:
     external: true
-  portainer:
-    external: true
-  
-
-  # certbot:
-  #   image: certbot/certbot:latest
-  #   container_name: certbot
-  #   volumes:
-  #     - ./certbot/www/:/var/www/certbot/:rw
-  #     - ./certbot/conf/:/etc/letsencrypt/:rw
-  #   depends_on:
-  #     - webserver
-  #   # command: certonly --webroot --webroot-path=/var/www/certbot/ --email ${EMAIL} --agree-tos --no-eff-email --staging -d ${DOMAIN}
-    

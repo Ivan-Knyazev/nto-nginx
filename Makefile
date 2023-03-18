@@ -1,27 +1,27 @@
-.PHONY: check run stop down
+.PHONY: build run clean chown stop down
 
-
-check:
-	docker compose up
+build:
+	docker build . -t nto-nginx
 
 run:
-	docker compose up -d
+#	mkdir -p volumes/data/ volumes/pgadmin/
+	docker compose up
+
+gen_cert:
+	cat ssl/local_cer.pem ssl/ca_cer.pem > ssl/cer.pem
+
+
+# clean:
+#	rm -rf ./volumes/
+
+# chown:
+#	chown -R 5050:5050 ./volumes/pgadmin/
+
+logs:
+	docker compose logs
 
 stop:
-	docker stop nto-nginx
+	docker compose stop
 
 down:
 	docker compose down
-
-
-# include .env
-# export
-
-# test:
-# 	mkdir -p certbot/www certbot/conf/
-# 	docker compose run --rm certbot certonly --webroot --webroot-path /var/www/certbot/ --email ${EMAIL} --agree-tos --no-eff-email --dry-run -d ${DOMAIN}
-
-# create:
-# 	mkdir -p certbot/www certbot/conf/
-# 	docker compose run --rm certbot certonly --webroot --webroot-path /var/www/certbot/ --email ${EMAIL} --agree-tos --no-eff-email -d ${DOMAIN}
-# 	# --staging
