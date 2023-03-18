@@ -10,8 +10,8 @@ services:
       - ${PGADMIN_PORT}:10103
     volumes:
       - ./nginx/conf/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
-      - ./nginx/ssl/ntv3.crt:/etc/ssl/ntv3.crt:ro
-      - ./nginx/ssl/ntv3.key:/etc/ssl/ntv3.key:ro
+      - ./nginx/ssl/lapsoft.mooo.com-crt.pem:/etc/ssl/lapsoft.mooo.com-crt.pem:ro
+      - ./nginx/ssl/lapsoft.mooo.com-key.pem:/etc/ssl/lapsoft.mooo.com-key.pem:ro
       # - ./volumes/error.log:/var/log/nginx/error.log
       # - ./volumes/access.log:/var/log/nginx/access.log
     networks:

@@ -1,4 +1,5 @@
 .env
 test_nginx/
 ssl_old/
+ssl_old_2/
 ssl/
