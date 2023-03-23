@@ -1,14 +1,23 @@
+version: "3.0"
+
 services:
-  web:
+  nginx:
     image: nto-nginx
+    container_name: nto-nginx
+    restart: unless-stopped
     # volumes:
     #   - ./templates:/etc/nginx/templates
     ports:
-      - ${PGADMIN_PORT}:10100
-      - ${PORTAINER_PORT}:20001
+      - ${FRONTEND_PORT}:10100
+      - ${PGADMIN_PORT}:10102
+      - ${USERS_SERVICE_PORT}:10102
+      - ${BACKEND_SERVICE_PORT}:10102
     networks:
       - postgres
+      - front
 
 networks:
   postgres:
+    external: true
+  front:
     external: true

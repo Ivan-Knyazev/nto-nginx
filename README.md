@@ -16,6 +16,11 @@ Put private key to `ssl/key.pem`
 
 Run `make gen_cert`
 
+## Commands to deploy
+
+### Build
+`make build`
+
 ### Run
 `make run`
 
@@ -24,3 +29,6 @@ Run `make gen_cert`
 
 ### Down
 `make down`
+
+### Logs
+`make logs`
